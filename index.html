@@ -60,10 +60,10 @@
     <script id="template" type="x-tmpl-mustache">
       {{#operatorArray}}
         <div class="card">
-          <h4 class="card-title">Name: {{operatorName}}</h4>
-          <h6 class="card-title">Altitude: {{operatorAltitude}}</h6>
-          <h6 class="card-title">Latitude: {{operatorLag}}</h6>
-          <h6 class="card-title">Longitude: {{operatorLng}}</h6>
+          <h4 class="card-title">{{operatorName}}</h4>
+          <h6 class="card-title">{{operatorAltitude}}</h6>
+          <h6 class="card-title">{{operatorLag}}</h6>
+          <h6 class="card-title">{{operatorLng}}</h6>
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">{{votes}} ættos</h6>
             <input type="number" class="form-control" placeholder="Amount" id={{index}}>
