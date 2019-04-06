@@ -1,0 +1,40 @@
+contract SatelliteOperator =
+
+  record operator = { 
+        creatorAddress : address,
+        name : string,
+        altitude : int,
+        lag : int,
+        lng : int,
+        voteCount : int 
+      }
+
+  record state = { 
+  	    operators : map(int, operator),
+        operatorsLength : int 
+      }
+
+  function init() = { 
+        operators = {},
+        operatorsLength = 0 
+      }
+      
+  public stateful function registerOperator(url' : string, name' : string, altitude' : int, lag' : int, lng' : int) =
+    let operator = { creatorAddress = Call.caller, name = name', altitude = altitude', lag = lag', lng = lng', voteCount = 0}
+    let index = getOperatorsLength() + 1
+    put(state{ operators[index] = operator, operatorsLength = index })
+
+  public stateful function voteOperator(index : int) =
+    let operator = getOperator(index)
+    Chain.spend(operator.creatorAddress, Call.value)
+    let updatedVoteCount = operator.voteCount + Call.value
+    let updatedOperators = state.operators{ [index].voteCount = updatedVoteCount }
+    put(state{ operators = updatedOperators })
+    
+  public function getOperator(index : int) : operator =
+  	switch(Map.lookup(index, state.operators))
+	    None    => abort("There is no operator with this index registered.")
+	    Some(x) => x
+    
+  public function getOperatorsLength() : int =
+    state.operatorsLength
