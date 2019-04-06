@@ -1,4 +1,4 @@
-const contractAddress ='ct_dpCQGDHMYTieLxeLq1SYprviSBBR6JP2Jc15V9QYDXczJ6wg5';
+const contractAddress ='ct_2oCCTfoFC6FFfF6khx1BbaXZVXCMnwMEKhfYn2azpjFkkUwiq9';
 var client = null;
 var operatorArray = [];
 var operatorsLength = 0;
