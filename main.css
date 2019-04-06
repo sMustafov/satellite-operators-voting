@@ -1,7 +1,11 @@
 body{
-  background-color:#311B58;
+  background-color:#004E6E;
   padding: 1em;
 }
+
+input{margin: 5px;;
+  margin-right: auto;
+  margin-left: auto;}
 
 .div-center {
   margin: 0 auto;
@@ -10,10 +14,6 @@ body{
 #title-div {
   margin: 1em;
   color: white;
-}
-
-img{
-  width:40px;
 }
 
 #message {
